@@ -16,10 +16,11 @@ namespace DataAccess
     {
         public static IServiceCollection AddDataAccessServices(this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddDbContext<TobetoContext>(options => options.UseInMemoryDatabase("nArchitecture"));
+            //services.AddDbContext<TobetoContext>(options => options.UseInMemoryDatabase("nArchitecture"));
 
             //services.AddDbContext<BaseDbContext>(options => options.UseSqlServer(configuration.GetConnectionString("RentACar")));
 
+            services.AddDbContext<TobetoContext>(options => options.UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=TobetoCourseAcademyDb;Trusted_Connection=true"));
             services.AddScoped<ICategoryDal, EfCategoryDal>();
             services.AddScoped<ICourseDal, EfCourseDal>();
 

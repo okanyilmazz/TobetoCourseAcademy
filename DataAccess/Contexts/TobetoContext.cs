@@ -16,6 +16,10 @@ namespace DataAccess.Contexts
 
         public DbSet<Category> Categories { get; set; }
         public DbSet<Course> Courses { get; set; }
+        public DbSet<Instructor> Instructors { get; set; }
+        public DbSet<Student> Students { get; set; }
+        public DbSet<InstructorOfCourse> InstructorOfCourses { get; set; }
+        public DbSet<StudentOfCourse> StudentOfCourses { get; set; }
 
 
         public TobetoContext(DbContextOptions dbContextOptions, IConfiguration configuration) : base(dbContextOptions)

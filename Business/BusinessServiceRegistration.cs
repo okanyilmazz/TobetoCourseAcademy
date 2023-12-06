@@ -15,8 +15,6 @@ public static class BusinessServiceRegistration
     {
         services.AddScoped<ICategoryService, CategoryManager>();
         services.AddScoped<ICourseService, CourseManager>();
-
-
         return services;
     }
 }

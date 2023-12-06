@@ -16,18 +16,31 @@ namespace WebAPI.Controllers
             _courseService = courseService;
         }
 
-        [HttpGet]
-        public async Task<IActionResult> GetList()
+        [HttpGet("GetDetailsList")]
+        public async Task<IActionResult> GetDetailsList()
         {
             var result = await _courseService.GetDetailsListAsync();
             return Ok(result);
         }
 
+        [HttpGet("GetList")]
+        public async Task<IActionResult> GetList()
+        {
+            var result = await _courseService.GetListAsync();
+            return Ok(result);
+        }
 
-        [HttpPost]
+        [HttpPost("Add")]
         public async Task<IActionResult> Add([FromBody] Course course)
         {
             await _courseService.Add(course);
+            return Ok();
+        }
+
+        [HttpPost("Delete")]
+        public async Task<IActionResult> Delete( Course course)
+        {
+            await _courseService.Delete(course);
             return Ok();
         }
     }

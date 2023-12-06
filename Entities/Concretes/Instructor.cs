@@ -7,9 +7,10 @@ using System.Threading.Tasks;
 
 namespace Entities.Concretes
 {
-    public class Category : Entity<int>
+    public class Instructor : Entity<int>
     {
-        public string Name { get; set; }
-        public string Description { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string Email { get; set; }
     }
 }

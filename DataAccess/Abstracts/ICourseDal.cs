@@ -2,6 +2,7 @@
 using Core.DataAccess.Paging;
 using Core.DataAccess.Repositories;
 using Entities.Concretes;
+using Entities.DTOs;
 
 namespace DataAccess.Abstracts
 {

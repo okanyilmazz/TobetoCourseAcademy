@@ -3,6 +3,7 @@ using Core.DataAccess.Repositories;
 using DataAccess.Abstracts;
 using DataAccess.Contexts;
 using Entities.Concretes;
+using Entities.DTOs;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.InMemory.Storage.Internal;
 using System;
@@ -16,6 +17,7 @@ namespace DataAccess.Concretes.EntityFramework
     public class EfCourseDal : EfRepositoryBase<Course, int, TobetoContext>, ICourseDal
     {
         TobetoContext _context;
+
         public EfCourseDal(TobetoContext context) : base(context)
         {
             _context = context;
@@ -34,7 +36,7 @@ namespace DataAccess.Concretes.EntityFramework
                                     Id = course.Id,
                                     CategoryName = category.Name,
                                     CourseName = course.Name
-                                }).ToPaginateAsync(index,size,0);
+                                }).ToPaginateAsync(index, size, from: 0);
 
             return result;
         }
