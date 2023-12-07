@@ -16,10 +16,10 @@ namespace WebAPI.Controllers
             _courseService = courseService;
         }
 
-        [HttpGet("GetDetailsList")]
-        public async Task<IActionResult> GetDetailsList()
+        [HttpGet("GetDetailsWithStudentAndInstructorListAsync")]
+        public async Task<IActionResult> GetDetailsWithStudentAndInstructorListAsync()
         {
-            var result = await _courseService.GetDetailsListAsync();
+            var result = await _courseService.GetDetailsWithStudentAndInstructorListAsync();
             return Ok(result);
         }
 
@@ -33,14 +33,20 @@ namespace WebAPI.Controllers
         [HttpPost("Add")]
         public async Task<IActionResult> Add([FromBody] Course course)
         {
-            await _courseService.Add(course);
+            await _courseService.AddAsync(course);
             return Ok();
         }
 
         [HttpPost("Delete")]
-        public async Task<IActionResult> Delete( Course course)
+        public async Task<IActionResult> Delete(Course course)
         {
-            await _courseService.Delete(course);
+            await _courseService.DeleteAsync(course);
+            return Ok();
+        }
+        [HttpPost("Update")]
+        public async Task<IActionResult> Update(Course course)
+        {
+            await _courseService.UpdateAsync(course);
             return Ok();
         }
     }

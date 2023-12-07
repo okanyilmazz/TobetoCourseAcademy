@@ -8,6 +8,6 @@ namespace DataAccess.Abstracts
 {
     public interface ICourseDal : IRepository<Course, int>, IAsyncRepository<Course, int>
     {
-        Task<IPaginate<CourseDetailsDto>> GetCourseDetails();
+        Task<IPaginate<CourseDetailsWithStudentAndInstructorDto>> GetDetailsWithStudentAndInstructorListAsync();
     }
 }

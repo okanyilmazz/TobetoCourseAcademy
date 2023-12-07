@@ -23,6 +23,9 @@ namespace DataAccess
             services.AddDbContext<TobetoContext>(options => options.UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=TobetoCourseAcademyDb;Trusted_Connection=true"));
             services.AddScoped<ICategoryDal, EfCategoryDal>();
             services.AddScoped<ICourseDal, EfCourseDal>();
+            services.AddScoped<IStudentDal, EfStudentDal>();
+            services.AddScoped<IInstructorDal, EfInstructorDal>();
+
 
             return services;
         }

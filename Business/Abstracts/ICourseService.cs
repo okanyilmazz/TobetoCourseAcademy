@@ -7,13 +7,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Business.Abstracts
+namespace Business.Abstracts;
+
+public interface ICourseService
 {
-    public interface ICourseService
-    {
-        Task Add(Course course);
-        Task<IPaginate<Course>> GetListAsync();
-        Task<IPaginate<CourseDetailsDto>> GetDetailsListAsync();
-        Task Delete(Course course);
-    }
+    Task<IPaginate<Course>> GetListAsync();
+    Task<IPaginate<CourseDetailsWithStudentAndInstructorDto>> GetDetailsWithStudentAndInstructorListAsync();
+    Task<Course> GetByIdAsync(int id);
+    Task AddAsync(Course course);
+    Task DeleteAsync(Course course);
+    Task UpdateAsync(Course course);
 }

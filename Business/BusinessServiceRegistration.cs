@@ -1,5 +1,6 @@
 ﻿using Business.Abstracts;
 using Business.Concretes;
+
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -15,6 +16,8 @@ public static class BusinessServiceRegistration
     {
         services.AddScoped<ICategoryService, CategoryManager>();
         services.AddScoped<ICourseService, CourseManager>();
+        services.AddScoped<IStudentService, StudentManager>();
+        services.AddScoped<IInstructorService, InstructorManager>();
         return services;
     }
 }

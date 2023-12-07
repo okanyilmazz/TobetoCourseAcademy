@@ -9,5 +9,7 @@ namespace Entities.Concretes
 {
     public class InstructorOfCourse : Entity<int>
     {
+        public int InstructorId { get; set; }
+        public int CourseId { get; set; }
     }
 }
