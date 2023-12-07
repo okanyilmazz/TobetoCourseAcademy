@@ -25,10 +25,14 @@ namespace DataAccess.Concretes.EntityFramework
             int index = 0;
             int size = 10;
             var result = await (from student in _context.Students
-                                join studentOfCourse in _context.StudentOfCourses on student.Id equals studentOfCourse.StudentId
-                                join course in _context.Courses on studentOfCourse.CourseId equals course.Id
-                                join category in _context.Categories on course.CategoryId equals category.Id
-                                group new {student, course, category} by student into studentGroup
+                                join studentOfCourse in _context.StudentOfCourses 
+                                on student.Id equals studentOfCourse.StudentId
+                                join course in _context.Courses 
+                                on studentOfCourse.CourseId equals course.Id
+                                join category in _context.Categories 
+                                on course.CategoryId equals category.Id
+                                group new {student, course, category} 
+                                by student into studentGroup
                                 select new StudentDetailsDto
                                 {
                                     FirstName = studentGroup.Key.FirstName,
@@ -45,45 +49,5 @@ namespace DataAccess.Concretes.EntityFramework
 
             return result;
         }
-
-        /*Designed to come along with the Instructor */
-
-        /*public async Task<IPaginate<StudentDetailsDto>> GetDetailsListAsync()
-        {
-            int index = 0;
-            int size = 10;
-            var result = await (from student in _context.Students
-                                join studentOfCourse in _context.StudentOfCourses
-                                on student.Id equals studentOfCourse.StudentId
-                                join course in _context.Courses
-                                on studentOfCourse.CourseId equals course.Id
-                                join category in _context.Categories
-                                on course.CategoryId equals category.Id
-                                join instructorOfCourse in _context.InstructorOfCourses
-                                on course.Id equals instructorOfCourse.CourseId
-                                join instructor in _context.Instructors
-                                on instructorOfCourse.InstructorId equals instructor.Id
-                                group new { student, course, category, instructor } by student into studentGroup
-                                select new StudentDetailsDto
-                                {
-                                    FirstName = studentGroup.Key.FirstName,
-                                    LastName = studentGroup.Key.LastName,
-                                    Email = studentGroup.Key.Email,
-                                    CourseDetails = studentGroup.Select(s => new CourseDetailsForStudentDto
-                                    {
-                                        Id = s.course.Id,
-                                        CourseName = s.course.Name,
-                                        CourseDescription = s.course.Description,
-                                        CategoryName = s.category.Name,
-                                        InstructorFirstName = s.instructor.FirstName,
-                                        InstructorLastName = s.instructor.LastName,
-                                        InstructorEmail = s.instructor.Email
-                                    }).ToList()
-                                }).ToPaginateAsync(index, size);
-
-            return result;
-        }*/
-
-        // #endregion
     }
 }
